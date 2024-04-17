@@ -6,7 +6,8 @@
              Title="DriverPage"
              x:Name="DriverPageName"
              BindingContext="{x:Reference DriverPageName}">
-    <Grid RowDefinitions="*, Auto">
+    <Grid RowDefinitions="*, Auto"
+          BackgroundColor="Transparent">
         <ScrollView Padding="15"
                         Margin="5"
                         Grid.Row="0">
