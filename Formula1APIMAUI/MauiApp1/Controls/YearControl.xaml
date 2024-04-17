@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.controls.YearControl">
+    
+    <Grid ColumnDefinitions="100, 150, 100"
+          ColumnSpacing="20">
+        <Border StrokeShape="RoundRectangle"
+                StrokeThickness="0"
+                BackgroundColor="Transparent"
+                Grid.Column="0">
+            <ImageButton
+                Source="minus"
+                Clicked="MinusButton_Clicked"
+                x:Name="MinusButton"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                WidthRequest="40"
+                HeightRequest="40">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource White}"/>
+                </ImageButton.Behaviors>
+            </ImageButton>     
+        </Border>
+        <Border StrokeShape="RoundRectangle"
+                StrokeThickness="0"
+                BackgroundColor="Transparent"
+                Grid.Column="1">
+            <Entry 
+                   x:Name="ValueEntry"
+                   FontSize="42"
+                   TextColor="{StaticResource PrimaryDark}"
+                   HorizontalTextAlignment="Center"
+                   TextChanged="ValueEntry_TextChanged"
+                   Completed="ValueEntry_Completed"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Keyboard="Numeric"/>
+        </Border>
+        <Border Grid.Column="2"
+                StrokeShape="RoundRectangle"
+                StrokeThickness="0"
+                BackgroundColor="Transparent">
+            <ImageButton 
+                    Source="add"
+                    Clicked="PlusButton_Clicked"
+                    x:Name="PlusButton"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    WidthRequest="40"
+                    HeightRequest="40">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource White}"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
+        </Border>
+    </Grid>
+    
+</ContentView>

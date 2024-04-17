@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.Popup.DriverDetailPopup"
+             x:Name="DriverPopup"
+             BindingContext="{x:Reference DriverPopup}">
+    <Grid RowDefinitions="Auto, Auto, Auto"
+          Padding="20"
+          RowSpacing="20"
+          BackgroundColor="White">
+        <Border StrokeShape="RoundRectangle"
+                StrokeThickness="0"
+                BackgroundColor="Transparent"
+                Grid.Row="0">
+            <VerticalStackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Spacing="5">
+                <Label Text="{Binding FirstName}"
+                       TextColor="{StaticResource Primary}"
+                       FontSize="25"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+                <Label Text="{Binding LastName}"
+                       TextColor="{StaticResource Primary}"
+                       FontSize="25"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Border>
+        <Border Grid.Row="1"
+                StrokeShape="RoundRectangle"
+                StrokeThickness="0"
+                BackgroundColor="Transparent">
+            <HorizontalStackLayout VerticalOptions="Center"
+                                   HorizontalOptions="Center">
+                <Grid ColumnDefinitions="*, *"
+                      ColumnSpacing="30">
+                    <Label Text="{Binding Flag}"
+                           FontSize="30"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Column="0"/>
+                    <Label Text="{Binding DateBirth}"
+                           TextColor="{StaticResource PrimaryDark}"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Column="1"/>
+                </Grid>
+            </HorizontalStackLayout>
+        </Border>
+        <Border Grid.Row="2"
+                StrokeShape="RoundRectangle"
+                StrokeThickness="0"
+                BackgroundColor="Transparent"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+            <Label Text="{Binding PermanentNumber}"
+                   FontSize="40"
+                   FontAttributes="Italic"
+                   TextColor="{StaticResource PrimaryDark}"/>
+        </Border>
+        <Grid.Shadow>
+            <Shadow Brush="{StaticResource PrimaryBrush}"
+                    Opacity="0.6"
+                    Offset="5, 5"
+                    Radius="20"/>
+        </Grid.Shadow>
+    </Grid>
+</mct:Popup>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiApp1.controls"
+             x:Class="MauiApp1.Pages.DriverPage"
+             Title="DriverPage"
+             x:Name="DriverPageName"
+             BindingContext="{x:Reference DriverPageName}">
+    <Grid RowDefinitions="*, Auto">
+        <ScrollView Padding="15"
+                        Margin="5"
+                        Grid.Row="0">
+            <CollectionView ItemsSource="{Binding Drivers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle"
+                                StrokeThickness="0"
+                                Padding="10"
+                                Margin="10">
+                            <Grid RowDefinitions="3*, 2*"
+                                  ColumnDefinitions="*, *"
+                                  >         
+                                <Border StrokeShape="RoundRectangle"
+                                        StrokeThickness="0"
+                                        BackgroundColor="Transparent"
+                                        Grid.Row="0"
+                                        Grid.ColumnSpan="2">
+                                    <Grid ColumnDefinitions="*, *"
+                                          ColumnSpacing="10">
+                                        <Label Grid.Column="0" 
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Center"
+                                               FontAttributes="Bold"
+                                               FontSize="20"
+                                               TextColor="{StaticResource Primary}"
+                                               Text="{Binding givenName}"/>
+                                        <Label Grid.Column="1" 
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               FontAttributes="Bold"
+                                               FontSize="20"
+                                               TextColor="{StaticResource Primary}"
+                                               Text="{Binding familyName}"/>
+                                    </Grid>
+                                </Border>
+                                <Border Grid.Row="1" 
+                                        Grid.Column="0"
+                                        StrokeShape="RoundRectangle"
+                                        StrokeThickness="0"
+                                        BackgroundColor="Transparent">
+                                    <Label HorizontalOptions="StartAndExpand"
+                                           VerticalOptions="Center"
+                                           FontAttributes="Bold"
+                                           FontSize="16"
+                                           TextColor="{StaticResource PrimaryDark}"
+                                           Text="{Binding dateOfBirth}"/>
+                                </Border>
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="End"
+                                       Text="{Binding emojiFlag}"/>
+                            </Grid>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding Source={x:Reference DriverPageName},
+                                                      Path=BindingContext.ShowDriver}"
+                                                      CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Border Grid.Row="1"
+                x:Name="borderControl"
+                StrokeShape="{OnPlatform Android='RoundRectangle 40, 40, 0, 0', Default=RoundRectangle 0}"
+                StrokeThickness="0"
+                HeightRequest="150"
+                BackgroundColor="{StaticResource Primary}"
+                VerticalOptions="End"
+                Margin="-1"
+                Padding="15">
+            <Grid>
+                 <controls:YearControl Grid.Row="0" 
+                                      HorizontalOptions="Center"
+                                      VerticalOptions="Center"
+                                      x:Name="YearControlName"/>
+                </Grid>
+            <Border.Shadow>
+                <Shadow Brush="{StaticResource Primary}"
+                        Radius="100"/>
+            </Border.Shadow>
+        </Border>
+        <!-- ActivityIndicators -->
+        <ActivityIndicator Grid.RowSpan="2" 
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   IsRunning="{Binding IsLoading}"
+                   IsVisible="{Binding IsLoading}"
+                   Color="{StaticResource PrimaryDark}"/>
+    </Grid>
+
+</ContentPage>
